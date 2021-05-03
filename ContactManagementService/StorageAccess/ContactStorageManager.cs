@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace ContactManagementService.StorageAccess
 {
-    public class StorageManager : IStorageManager
+    public class ContactStorageManager : IContactStorageManager
     {
         private readonly ContactManagementContext _context;
 
-        public StorageManager(ContactManagementContext context)
+        public ContactStorageManager(ContactManagementContext context)
         {
             _context = context;
         }

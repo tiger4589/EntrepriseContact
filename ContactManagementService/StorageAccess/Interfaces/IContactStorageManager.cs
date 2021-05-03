@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ContactManagementService.StorageAccess.Interfaces
 {
-    public interface IStorageManager
+    public interface IContactStorageManager
     {
         Task<int> AddContact(Contact contact);
         Task UpdateContact(Contact contact);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ContactManagementService.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,8 @@ namespace ContactManagementService.Services.Interfaces
 {
     public interface IEntrepriseManager
     {
+        Task<int> AddEntreprise(EntrepriseModel model);
+        Task UpdateEntreprise(int id, EntrepriseModel model);
+        Task DeleteEntreprise(int id);
     }
 }

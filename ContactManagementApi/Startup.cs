@@ -37,7 +37,9 @@ namespace ContactManagementApi
             services.AddScoped<IEntrepriseAddressManager, EntrepriseAddressManager>();
             services.AddScoped<IEntrepriseContactManager, EntrepriseContactManager>();
             services.AddScoped<IEntrepriseManager, EntrepriseManager>();
-            services.AddScoped<IStorageManager, StorageManager>();
+            services.AddScoped<IContactStorageManager, ContactStorageManager>();
+            services.AddScoped<IEntrepriseStorageManager, EntrepriseStorageManager>();
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

@@ -20,7 +20,7 @@ namespace ContactManagementApi.Controllers
             _contactManager = contactManager;
         }
 
-        [HttpPost("add", Name = "add")]
+        [HttpPost("add", Name = "add-contact")]
         public async Task<IActionResult> Add([FromBody] ContactModel model)
         {
             try
@@ -45,7 +45,7 @@ namespace ContactManagementApi.Controllers
             }
         }
 
-        [HttpPost("update/{id}", Name = "update")]
+        [HttpPost("update/{id}", Name = "update-contact")]
         public async Task<IActionResult> Update(int id, [FromBody] ContactModel model)
         {
             try
@@ -63,7 +63,7 @@ namespace ContactManagementApi.Controllers
             }
         }
 
-        [HttpPost("delete/{id}", Name = "delete")]
+        [HttpPost("delete/{id}", Name = "delete-contact")]
         public async Task<IActionResult> Delete(int id)
         {
             try

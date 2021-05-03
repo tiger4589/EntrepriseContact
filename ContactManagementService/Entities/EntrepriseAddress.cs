@@ -24,7 +24,6 @@ namespace ContactManagementService.Entities
         public string Street { get; set; }
         [Required]
         public string PostalCode { get; set; }
-
         public bool IsMainAddress { get; set; }
     }
 }

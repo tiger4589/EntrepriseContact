@@ -13,10 +13,10 @@ namespace ContactManagementService.Services
 {
     public class ContactManager : IContactManager
     {
-        private readonly IStorageManager _storageManager;
+        private readonly IContactStorageManager _storageManager;
         private readonly IMapper _mapper;
 
-        public ContactManager(IStorageManager storageManager, IMapper mapper)
+        public ContactManager(IContactStorageManager storageManager, IMapper mapper)
         {
             _storageManager = storageManager;
             _mapper = mapper;
@@ -24,11 +24,6 @@ namespace ContactManagementService.Services
 
         public async Task<int> AddContact(ContactModel model)
         {
-            if (string.IsNullOrWhiteSpace(model.City) || string.IsNullOrWhiteSpace(model.Country) || string.IsNullOrWhiteSpace(model.PostalCode) || string.IsNullOrWhiteSpace(model.Street))
-            {
-                throw new InvalidOperationException("Contact must have a full address");
-            }
-
             int contactId = await _storageManager.AddContact(_mapper.Map<Contact>(model));
             return contactId;
         }
