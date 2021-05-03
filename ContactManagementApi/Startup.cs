@@ -2,6 +2,8 @@ using ContactManagementApi.MapperConfiguration;
 using ContactManagementService.Context;
 using ContactManagementService.Services;
 using ContactManagementService.Services.Interfaces;
+using ContactManagementService.StorageAccess;
+using ContactManagementService.StorageAccess.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -35,13 +37,14 @@ namespace ContactManagementApi
             services.AddScoped<IEntrepriseAddressManager, EntrepriseAddressManager>();
             services.AddScoped<IEntrepriseContactManager, EntrepriseContactManager>();
             services.AddScoped<IEntrepriseManager, EntrepriseManager>();
-
+            services.AddScoped<IStorageManager, StorageManager>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ContactManagementApi", Version = "v1" });
             });
             services.AddAutoMapper(typeof(MapperProfile));
+            services.AddRouting(options => options.LowercaseUrls = true);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
