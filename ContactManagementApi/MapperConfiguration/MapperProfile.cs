@@ -17,6 +17,9 @@ namespace ContactManagementApi.MapperConfiguration
         {
             CreateMap<ContactModel, Contact>();
             CreateMap<EntrepriseModel, Entreprise>();
+            CreateMap<EntrepriseAddressModel, EntrepriseAddress>();
+            CreateMap<EntrepriseContactModel, EntrepriseContact>();
+            CreateMap<EntrepriseContact, EntrepriseContactModel>();
         }
     }
 }

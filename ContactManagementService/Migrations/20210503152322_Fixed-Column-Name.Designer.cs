@@ -3,14 +3,16 @@ using ContactManagementService.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ContactManagementService.Migrations
 {
     [DbContext(typeof(ContactManagementContext))]
-    partial class ContactManagementContextModelSnapshot : ModelSnapshot
+    [Migration("20210503152322_Fixed-Column-Name")]
+    partial class FixedColumnName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -129,7 +131,7 @@ namespace ContactManagementService.Migrations
 
             modelBuilder.Entity("ContactManagementService.Entities.EntrepriseContact", b =>
                 {
-                    b.Property<int>("EntrepriseId")
+                    b.Property<int>("EnterpriseId")
                         .HasColumnType("int");
 
                     b.Property<int>("ContactId")
@@ -141,7 +143,7 @@ namespace ContactManagementService.Migrations
                     b.Property<string>("VATNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("EntrepriseId", "ContactId");
+                    b.HasKey("EnterpriseId", "ContactId");
 
                     b.HasIndex("ContactId");
 
@@ -169,7 +171,7 @@ namespace ContactManagementService.Migrations
 
                     b.HasOne("ContactManagementService.Entities.Entreprise", "Entreprise")
                         .WithMany()
-                        .HasForeignKey("EntrepriseId")
+                        .HasForeignKey("EnterpriseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

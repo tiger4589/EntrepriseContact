@@ -29,7 +29,6 @@ namespace ContactManagementApi
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ContactManagementContext>(opts => opts.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -39,6 +38,8 @@ namespace ContactManagementApi
             services.AddScoped<IEntrepriseManager, EntrepriseManager>();
             services.AddScoped<IContactStorageManager, ContactStorageManager>();
             services.AddScoped<IEntrepriseStorageManager, EntrepriseStorageManager>();
+            services.AddScoped<IEntrepriseAddressStorageManager, EntrepriseAddressStorageManager>();
+            services.AddScoped<IEntrepriseContactStorageManager, EntrepriseContactStorageManager>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -49,7 +50,6 @@ namespace ContactManagementApi
             services.AddRouting(options => options.LowercaseUrls = true);
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -59,6 +59,7 @@ namespace ContactManagementApi
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ContactManagementApi v1"));
             }
 
+            //create database on first run!
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetRequiredService<ContactManagementContext>();

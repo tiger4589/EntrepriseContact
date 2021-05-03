@@ -8,7 +8,7 @@ namespace ContactManagementService.Enums
 {
     public enum EContactType
     {
-        Freelancer,
-        Employee
+        Freelancer = 1,
+        Employee = 2
     }
 }

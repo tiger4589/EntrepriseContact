@@ -53,5 +53,17 @@ namespace ContactManagementService.Services
 
             await _storageManager.UpdateEntreprise(entreprise);
         }
+
+        public async Task<bool> IsExistEntreprise(int id)
+        {
+            Entreprise entreprise = await _storageManager.GetEntreprise(id).ConfigureAwait(false);
+
+            if (entreprise == null)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

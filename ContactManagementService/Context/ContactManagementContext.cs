@@ -21,7 +21,7 @@ namespace ContactManagementService.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<EntrepriseContact>().HasKey(x => new { x.EnterpriseId, x.ContactId });
+            modelBuilder.Entity<EntrepriseContact>().HasKey(x => new { x.EntrepriseId, x.ContactId });
         }
     }
 }

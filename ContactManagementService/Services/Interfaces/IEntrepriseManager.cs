@@ -12,5 +12,6 @@ namespace ContactManagementService.Services.Interfaces
         Task<int> AddEntreprise(EntrepriseModel model);
         Task UpdateEntreprise(int id, EntrepriseModel model);
         Task DeleteEntreprise(int id);
+        Task<bool> IsExistEntreprise(int id);
     }
 }
